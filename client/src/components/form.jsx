@@ -1,11 +1,26 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
+import axios from 'axios'
 
 export default function MyForm() {
 
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    const onFinish = async (values) => {
+        console.log("hi")
+
+        try {
+            const response = await axios.get('http://localhost:3000/info', { params: values })
+            if (response.ok) {
+                console.log(response)
+            }
+            else {
+                console.log(error)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+
+
     };
 
 
