@@ -6,21 +6,16 @@ export default function MyForm() {
 
 
     const onFinish = async (values) => {
-        console.log("hi")
-
         try {
             const response = await axios.get('http://localhost:3000/info', { params: values })
-            if (response.ok) {
+            if (response.status === 200) { {/* Changed from response.ok to response.status */}
                 console.log(response)
-            }
-            else {
-                console.log(error)
+            } else {
+                console.log('Error:', response);
             }
         } catch (e) {
             console.log(e)
         }
-
-
     };
 
 
@@ -51,17 +46,15 @@ export default function MyForm() {
         >
             <Form.Item
                 label="Github"
-                name="Github"
-                rules={
-                    [
-                        {
-                            required: true,
-                            message: 'Please enter your Github Username',
-                        },
-                    ]}
+                name="githubUsername" 
+                rules={[{
+                    required: true,
+                    message: 'Please enter your Github Username',
+                }]}
             >
                 <Input />
-            </Form.Item >
+            </Form.Item>
+
 
 
             <Form.Item
