@@ -34,7 +34,6 @@ app.get('/info', async (req, res) => {
         const data = await fetch(`https://api.github.com/users/${username}/repos`)
         if (data.ok) {
             const repolist = await data.json();
-            
 
             for (let i = 0; i < 6; i++) {
                 console.log('fetching')
@@ -47,13 +46,15 @@ app.get('/info', async (req, res) => {
                         return accumulator + Number(currentKey);
                     }, 0);
                     forests[repolist[i].name] = tree;
-                    console.log(forests);
-                    
+
+
                 } catch (error) {
                     console.log(error);
                 }
-                
+
             }
+
+            console.log(forests);
         }
         else {
             console.log('Failed to fetch repo content');
@@ -77,7 +78,7 @@ async function recur(path, tree) {
                 } else if (content.type === 'file' && content.size != undefined && content.html_url != undefined) {
                     tree.treepairs[content.html_url] = content.size;
                 }
-            }            
+            }
         } else {
             console.log(`Failed to fetch content for ${path}`);
         }

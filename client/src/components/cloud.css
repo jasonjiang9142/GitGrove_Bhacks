@@ -1,0 +1,14 @@
+/* Tree.css */
+/* Complex transition with shadows */
+.cloud-image img {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out, box-shadow 0.5s ease-in-out;
+    /* Initial shadow */
+}
+
+.cloud-image:hover img {
+    transform: scale(1.2);
+    opacity: 0.9;
+    /* Shadow on hover */
+}

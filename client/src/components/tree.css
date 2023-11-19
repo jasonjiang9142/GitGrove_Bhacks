@@ -1,0 +1,13 @@
+/* Tree.css */
+
+/* Define animation */
+.tree-image img {
+    transition: transform 0.3s ease-in-out;
+    /* Add a smooth transition effect */
+}
+
+/* Add hover effect */
+.tree-image:hover img {
+    transform: scale(1.1);
+    /* Increase the size of the image on hover */
+}
