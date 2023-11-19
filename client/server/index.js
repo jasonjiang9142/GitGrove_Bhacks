@@ -15,27 +15,40 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/info', async(req, res) => {
+app.get('/info', async (req, res) => {
     const { githubUsername } = req.query; // This should match the parameter sent from the client
     console.log('Received GitHub username:', githubUsername);
     let username = githubUsername;
-    
-    try{ 
+
+    try {
         const data = await fetch(`https://api.github.com/users/${username}/repos`)
-        if (data.ok) { 
+        if (data.ok) {
+            const repolist = await data.json()
 
-            const myresponse = await data.json()
-            for (let i = 0; i < myresponse.length; i++) {
-                console.log(myresponse[i].html_url)
+            // iterate through every repo
+            for (let i = 0; i < repolist.length; i++) {
+                const url = `${repolist[i].url}/contents`
+
+                try {
+                    const fetchUrl = await fetch(url)
+                    if (fetchUrl.ok) {
+                        const urlData = await fetchUrl.json()
+                        console.log(urlData)
+                    } else (
+                        console.log('failed to fetch url content')
+                    )
+
+                } catch (error) {
+                    console.log(error)
+                }
             }
-
         }
-        else{ 
-            console.log('error') 
+        else {
+            console.log('failed to fetch repo content')
         }
 
-    }catch(e) { 
-        console.log(e) 
+    } catch (e) {
+        console.log(e)
     }
 
     // Process the received data or send a response
