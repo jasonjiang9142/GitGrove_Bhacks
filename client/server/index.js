@@ -34,21 +34,20 @@ app.get('/info', async (req, res) => {
         const data = await fetch(`https://api.github.com/users/${username}/repos`)
         if (data.ok) {
             const repolist = await data.json();
-            
+
 
             for (let i = 0; i < repolist.length; i++) {
                 const repo = `${repolist[i].url}/contents`;
                 console.log(repolist[i].name)
-                
+
 
                 try {
                     let tree = new Tree();
                     await recur(repo, tree);
-                    tree.forest_size = Array.from(tree.treepairs.values()).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
                     forests[repolist[i].name] = tree;
-                    console.log(forests) 
+                    console.log(forests)
                     break
-                    
+
                 } catch (error) {
                     console.log(error);
                 }
