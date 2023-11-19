@@ -36,22 +36,23 @@ app.get('/info', async (req, res) => {
             const repolist = await data.json();
             
 
-            for (let i = 0; i < repolist.length; i++) {
+            for (let i = 0; i < 6; i++) {
+                console.log('fetching')
                 const repo = `${repolist[i].url}/contents`;
-                console.log(repolist[i].name)
-                
 
                 try {
                     let tree = new Tree();
                     await recur(repo, tree);
-                    tree.forest_size = Array.from(tree.treepairs.values()).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+                    tree.forest_size = Object.values(tree.treepairs).reduce((accumulator, currentKey) => {
+                        return accumulator + Number(currentKey);
+                    }, 0);
                     forests[repolist[i].name] = tree;
-                    console.log(forests) 
-                    break
+                    console.log(forests);
                     
                 } catch (error) {
                     console.log(error);
                 }
+                
             }
         }
         else {
@@ -72,11 +73,11 @@ async function recur(path, tree) {
 
             for (const content of contentList) {
                 if (content.type === 'dir') {
-                    await recur(content.url); // Recursive call for directories
+                    await recur(content.url, tree); // Now passing 'tree' to the recursive call
                 } else if (content.type === 'file' && content.size != undefined && content.html_url != undefined) {
-                    tree.treepairs[content.size] = content.html_url;
+                    tree.treepairs[content.html_url] = content.size;
                 }
-            }
+            }            
         } else {
             console.log(`Failed to fetch content for ${path}`);
         }
