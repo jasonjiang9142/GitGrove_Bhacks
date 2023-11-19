@@ -1,13 +1,43 @@
-/* Tree.css */
+/* Define the floating animation */
+@keyframes float {
 
-/* Define animation */
-.tree-image img {
-    transition: transform 0.3s ease-in-out;
-    /* Add a smooth transition effect */
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
-/* Add hover effect */
+.trees-container {
+    display: flex;
+    justify-content: space-evenly;
+    /* This will space out the trees evenly */
+    align-items: center;
+}
+
+.tree-wrapper {
+    max-width: 300px;
+    /* Reduced from 200px */
+    margin: 0 80px;
+    /* Reduced margin for closer spacing */
+}
+
+.tree-image img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.tree-image img {
+    animation: float 3s ease-in-out infinite;
+
+}
+
 .tree-image:hover img {
-    transform: scale(1.1);
-    /* Increase the size of the image on hover */
+    opacity: 0.8;
+    transform: scale(1.2);
+    /* Shadow on hover */
 }

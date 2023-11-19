@@ -4,6 +4,7 @@ import cors from "cors"
 // Establish Tree class
 class Tree {
     constructor() {
+        this.name = 'Name'
         this.treepairs = {}
         this.forest_size = 0;
     }
@@ -26,21 +27,45 @@ app.get('/', (req, res) => {
 
 const forests = {}
 app.get('/info', async (req, res) => {
+    res.send([
+        [
+          '../../assets/s_forest.png',
+          '../../assets/s_forest.png',
+          '../../assets/s_forest.png'
+        ],
+        [
+          1069,  526,    253,
+          1069,  526,    253,
+          9238, 3064, 492160
+        ],
+        [ 'BHacks', 'BHacks_Tree', 'ComparativeModel' ],
+        [
+          'https://github.com/jasonjiang9142/BHacks/blob/main/LICENSE',
+          'https://github.com/jasonjiang9142/BHacks/blob/main/client/.eslintrc.cjs',
+          'https://github.com/jasonjiang9142/BHacks/blob/main/client/.gitignore',
+          'https://github.com/jasonjiang9142/BHacks_Tree/blob/main/LICENSE',
+          'https://github.com/jasonjiang9142/BHacks_Tree/blob/main/Project/.eslintrc.cjs',
+          'https://github.com/jasonjiang9142/BHacks_Tree/blob/main/Project/.gitignore',
+          'https://github.com/jasonjiang9142/ComparativeModel/blob/main/Model.py',
+          'https://github.com/jasonjiang9142/ComparativeModel/blob/main/README.md',
+          'https://github.com/jasonjiang9142/ComparativeModel/blob/main/jkrowlingbook1.txt'
+        ]
+      ])
     const { githubUsername } = req.query;
     console.log('Received GitHub username:', githubUsername);
     let username = githubUsername;
-
     try {
         const data = await fetch(`https://api.github.com/users/${username}/repos`)
         if (data.ok) {
             const repolist = await data.json();
 
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < 3; i++) {
                 console.log('fetching')
                 const repo = `${repolist[i].url}/contents`;
 
                 try {
                     let tree = new Tree();
+                    tree.name = repolist[i].name;
                     await recur(repo, tree);
                     tree.forest_size = Object.values(tree.treepairs).reduce((accumulator, currentKey) => {
                         return accumulator + Number(currentKey);
@@ -54,7 +79,6 @@ app.get('/info', async (req, res) => {
 
             }
 
-            console.log(forests);
         }
         else {
             console.log('Failed to fetch repo content');
@@ -62,8 +86,32 @@ app.get('/info', async (req, res) => {
     } catch (e) {
         console.log(e);
     }
+    // ret index 0 is the image, index 1 is the size, index 2 is the name of the repositories, index 3 is the tree url
+    let ret = [[], [], [], []];
 
-    res.send('yes');
+    // Iterate over key-value pairs in the forests dictionary
+    for (const [key, size] of Object.entries(forests)) {
+        // adding the name
+        ret[2].push(size.name);
+        if (size.forest_size >= 200000) {
+            ret[0].push('../../assets/s_forest.png');
+        } else if (size.forest_size >= 500000 && size.forest_size < 1000000) {
+            ret[0].push('../../assets/m_forest.png');
+        } else {
+            ret[0].push('../../assets/l_forest.png');
+        }
+        
+        let i = 0;
+        for (const [tree_key, tree_value] of Object.entries(size.treepairs)) {
+            if (i === 3) { break; }
+            i++;
+            ret[1].push(tree_value);
+            ret[3].push(tree_key);
+        }
+    }
+
+    res.send(ret);
+
 });
 
 async function recur(path, tree) {
