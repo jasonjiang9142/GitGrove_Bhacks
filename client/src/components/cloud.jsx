@@ -6,28 +6,22 @@ import l_island from '../../assets/l_island.png';
 import m_island from '../../assets/m_island.png';
 import s_island from '../../assets/s_island.png';
 
-import cloud1 from '../../assets/cloud1.png';
-import cloud2 from '../../assets/cloud2.png';
-import cloud3 from '../../assets/cloud3.png';
-import cloud4 from '../../assets/cloud4.png';
-import cloud5 from '../../assets/cloud5.png';
-import cloud6 from '../../assets/cloud6.png';
-import cloud7 from '../../assets/cloud7.png';
-import cloud8 from '../../assets/cloud8.png';
-import cloud9 from '../../assets/cloud9.png';
-import cloud10 from '../../assets/cloud10.png';
-import cloud11 from '../../assets/cloud11.png';
-import cloud12 from '../../assets/cloud12.png';
-import cloud13 from '../../assets/cloud13.png';
-import cloud14 from '../../assets/cloud14.png';
-import cloud15 from '../../assets/cloud15.png';
-import cloud17 from '../../assets/cloud17.png';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
-export default function Cloud() {
+export default function Cloud(info) {
+    console.log(info)
+    console.log(info.info)
 
     const island = [l_island, m_island, s_island]
-    //const mycloud = [cloud1, cloud2, cloud3, cloud4, cloud5, cloud6, cloud7, cloud8, cloud9, cloud10, cloud11, cloud12, cloud13, cloud14, cloud15, cloud17]
+    const navigate = useNavigate();
+    const handleClick = () => {
+
+
+        navigate('/tree', { state: { data: info } });
+    };
+
 
     const shuffleArray = (array) => {
         const shuffled = array.sort(() => Math.random() - 0.5);
@@ -42,11 +36,10 @@ export default function Cloud() {
 
     return (
         <div>
-
             <div className="max-w-xs">
-                <a href="/tree" className="cloud-image">
+                <div className="cloud-image" onClick={handleClick}>
                     <img src={selectedIsland} alt="Selected Island" />
-                </a>
+                </div>
 
                 {/* {selectedClouds.map((cloud, index) => (
                     <img key={index} src={cloud} alt={`Cloud ${index}`} className="w-1/4" />

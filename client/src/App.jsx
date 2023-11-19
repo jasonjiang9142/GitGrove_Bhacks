@@ -4,6 +4,7 @@ import Cloud from './components/cloud';
 import MyForm from './components/form';
 import Tree from './components/tree';
 import IslandPage from './page/islandpage';
+import TreePage from './page/treepage';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<MyForm />} />
         <Route path="/island" element={<IslandPage />} />
-        <Route path="/tree" element={<Tree />} />
+        <Route path="/tree" element={<TreePage />} />
       </Routes>
     </Router>
 
