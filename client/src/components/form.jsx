@@ -14,8 +14,13 @@ export default function MyForm() {
             const response = await axios.get('http://localhost:3000/info', { params: values })
             if (response.status === 200) {
                 {/* Changed from response.ok to response.status */ }
-                console.log(response)
-                navigate('/island')
+                const manipulatedData = response.data.map(item => {
+                    // manipulate each item as needed
+                    return item;
+                });
+        
+                // Pass the manipulated data to /island route
+                navigate('/island', { state: { data: manipulatedData } });
             } else {
                 console.log('Error:', response);
             }
