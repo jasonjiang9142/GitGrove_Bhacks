@@ -3,6 +3,7 @@ import { Button, Form, Input } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './MyForm.css'; // Import your CSS file for additional styling
+import logo from '../../assets/Git_Grove_Logo.png';
 
 export default function MyForm() {
     const navigate = useNavigate();
@@ -30,33 +31,41 @@ export default function MyForm() {
 
     return (
         <div className="form-container">
+            <h1 className="form-title drop-shadow-md" >VISUALIZE YOUR WORKFLOW WITH GIT GROVE.</h1>
             <div className='form-content'>
-                <h1 className="form-title">Submit Your GitHub Page</h1>
                 <Form
                     name="basic"
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
                 >
-                    <Form.Item
-                        name="githubUsername"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please enter your Github Username',
-                            },
-                        ]}
-                    >
-                        <Input placeholder="Username" />
-                    </Form.Item>
+                    <div >
+                        <div>
+                            <Form.Item
+                                name="githubUsername"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please enter your Github Username',
+                                    },
+                                ]}
+                            >
+                                <Input placeholder="Github Username" />
+                            </Form.Item>
 
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" className="submit-btn">
-                            Submit
-                        </Button>
-                    </Form.Item>
+                            <Form.Item>
+                                <Button type="primary" htmlType="submit" className="submit-btn">
+                                    Transform
+                                </Button>
+                            </Form.Item>
+
+                        </div>
+                        
+                    </div>
                 </Form>
+                
             </div>
+            <img src={logo} alt="" className='w-1/6 self-end flex mb-1.5;'/>
         </div>
     );
 };

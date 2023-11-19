@@ -44,3 +44,6 @@
     animation: floatSlower 4s ease-in-out infinite;
 }
 
+.clouds {
+    height: 40rem;
+}

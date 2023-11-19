@@ -23,8 +23,8 @@ export default function IslandPage() {
         <div style={islandBgStyle} >
 
             <div >
-                <h1 className="text-center text-4xl font-bold mb-8 text-gray-800">Repos as Islands</h1>
-                <div className="h-screen flex justify-center items-center">
+                <h1 className="text-center text-9xl font-bold text-gray-800 pt-24">Here are your beloved repositories</h1>
+                <div className="clouds flex justify-center items-center">
                     <div className="text-center cloud-image-faster">
                         <Cloud info={data} />
                         {data && data[2] && data[2][0] ? data[2][0] : 'Default Value'}
