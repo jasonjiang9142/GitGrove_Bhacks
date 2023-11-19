@@ -1,0 +1,14 @@
+.island-image {
+    transform: scale(0.85);
+    opacity: 1;
+    /* Add a smooth transition effect */
+}
+
+/* Add hover effect */
+.island-image:hover {
+    transform: scale(1.2);
+    opacity: 0.9;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out, box-shadow 0.5s ease-in-out;
+
+    /* Increase the size of the image on hover */
+}
