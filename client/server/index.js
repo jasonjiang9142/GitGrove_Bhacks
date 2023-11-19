@@ -54,7 +54,6 @@ app.get('/info', async (req, res) => {
 
             }
 
-            console.log(forests);
         }
         else {
             console.log('Failed to fetch repo content');
@@ -62,8 +61,28 @@ app.get('/info', async (req, res) => {
     } catch (e) {
         console.log(e);
     }
+    let ret = [[], [], []];
 
-    res.send('yes');
+    // Iterate over key-value pairs in the forests dictionary
+    for (const [key, size] of Object.entries(forests)) {
+        ret[2].push(size.name());
+        if (size.forest_size >= 200000) {
+            ret[0].push('../../assets/s_forest.png');
+        } else if (size.forest_size >= 500000 && size.forest_size < 1000000) {
+            ret[0].push('../../assets/m_forest.png');
+        } else {
+            ret[0].push('../../assets/l_forest.png');
+        }
+        
+        // Assuming size.treepairs is an array with at least 6 elements
+        for (let i = 0; i < 6; i++) {
+            ret[1].push(size.treepairs[i]);
+        }
+    }
+
+    console.log(ret);
+    res.send(ret);
+
 });
 
 async function recur(path, tree) {
