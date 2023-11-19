@@ -3,10 +3,9 @@ import cors from "cors"
 
 // Establish Tree class
 class Tree {
-    constructor(treeSize, treeUrl, forestSize) {
-        this.tree_size = treeSize;
-        this.tree_url = treeUrl;
-        this.forest_size = forestSize;
+    constructor() {
+        this.treepairs = {}
+        this.forest_size = 0;
     }
 }
 
@@ -25,7 +24,7 @@ app.get('/', (req, res) => {
     res.send('Hi')
 })
 
-const forests = [];
+const forests = {}
 app.get('/info', async (req, res) => {
     const { githubUsername } = req.query;
     console.log('Received GitHub username:', githubUsername);
@@ -35,18 +34,21 @@ app.get('/info', async (req, res) => {
         const data = await fetch(`https://api.github.com/users/${username}/repos`)
         if (data.ok) {
             const repolist = await data.json();
+            
 
             for (let i = 0; i < repolist.length; i++) {
                 const repo = `${repolist[i].url}/contents`;
+                console.log(repolist[i].name)
+                
 
                 try {
-                    let tree = new Tree([], [], 0);
+                    let tree = new Tree();
                     await recur(repo, tree);
-                    let sumAll = function(tree) {
-                        return tree.tree_size.reduce((accumulator, current) => accumulator + current, 0);
-                    };
-                    tree.forest_size = sumAll(tree);
-                    forests.push(tree);
+                    tree.forest_size = Array.from(tree.treepairs.values()).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+                    forests[repolist[i].name] = tree;
+                    console.log(forests) 
+                    break
+                    
                 } catch (error) {
                     console.log(error);
                 }
@@ -71,9 +73,8 @@ async function recur(path, tree) {
             for (const content of contentList) {
                 if (content.type === 'dir') {
                     await recur(content.url); // Recursive call for directories
-                } else if (content.type === 'file') {
-                    tree.tree_size.push(content.size); // Add file size to tree
-                    tree.tree_url.push(content.html_url); // Add file url to tree
+                } else if (content.type === 'file' && content.size != undefined && content.html_url != undefined) {
+                    tree.treepairs[content.size] = content.html_url;
                 }
             }
         } else {
