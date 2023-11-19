@@ -35,7 +35,7 @@ app.get('/info', async (req, res) => {
         if (data.ok) {
             const repolist = await data.json();
 
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < 3; i++) {
                 console.log('fetching')
                 const repo = `${repolist[i].url}/contents`;
 
@@ -75,7 +75,7 @@ app.get('/info', async (req, res) => {
         }
         
         // Assuming size.treepairs is an array with at least 6 elements
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 3; i++) {
             ret[1].push(size.treepairs[i]);
         }
     }
