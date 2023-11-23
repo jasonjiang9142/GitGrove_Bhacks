@@ -30,9 +30,9 @@ export default function MyForm() {
     };
 
     return (
-        <div className="form-container">
-            <h1 className="form-title drop-shadow-md" >VISUALIZE YOUR WORKFLOW WITH GIT GROVE.</h1>
-            <div className='form-content'>
+        <div className="form-container flex items-center">
+            <h1 className="form-title drop-shadow-md text-center" >Visualize Your git workflow with GitGrove</h1>
+            <div className='form-content '>
                 <Form
                     name="basic"
                     onFinish={onFinish}
@@ -60,12 +60,12 @@ export default function MyForm() {
                             </Form.Item>
 
                         </div>
-                        
+
                     </div>
                 </Form>
-                
+
             </div>
-            <img src={logo} alt="" className='w-1/6 self-end flex mb-1.5;'/>
+            <img src={logo} alt="" className='w-1/6 self-end flex mb-1.5;' />
         </div>
     );
 };

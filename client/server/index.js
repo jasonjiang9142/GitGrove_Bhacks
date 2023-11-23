@@ -27,30 +27,7 @@ app.get('/', (req, res) => {
 
 const forests = {}
 app.get('/info', async (req, res) => {
-    res.send([
-        [
-          '../../assets/s_forest.png',
-          '../../assets/s_forest.png',
-          '../../assets/s_forest.png'
-        ],
-        [
-          1069,  526,    253,
-          1069,  526,    253,
-          9238, 3064, 492160
-        ],
-        [ 'BHacks', 'BHacks_Tree', 'ComparativeModel' ],
-        [
-          'https://github.com/jasonjiang9142/BHacks/blob/main/LICENSE',
-          'https://github.com/jasonjiang9142/BHacks/blob/main/client/.eslintrc.cjs',
-          'https://github.com/jasonjiang9142/BHacks/blob/main/client/.gitignore',
-          'https://github.com/jasonjiang9142/BHacks_Tree/blob/main/LICENSE',
-          'https://github.com/jasonjiang9142/BHacks_Tree/blob/main/Project/.eslintrc.cjs',
-          'https://github.com/jasonjiang9142/BHacks_Tree/blob/main/Project/.gitignore',
-          'https://github.com/jasonjiang9142/ComparativeModel/blob/main/Model.py',
-          'https://github.com/jasonjiang9142/ComparativeModel/blob/main/README.md',
-          'https://github.com/jasonjiang9142/ComparativeModel/blob/main/jkrowlingbook1.txt'
-        ]
-      ])
+
     const { githubUsername } = req.query;
     console.log('Received GitHub username:', githubUsername);
     let username = githubUsername;
@@ -100,7 +77,7 @@ app.get('/info', async (req, res) => {
         } else {
             ret[0].push('../../assets/l_forest.png');
         }
-        
+
         let i = 0;
         for (const [tree_key, tree_value] of Object.entries(size.treepairs)) {
             if (i === 3) { break; }

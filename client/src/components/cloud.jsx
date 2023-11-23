@@ -22,6 +22,15 @@ export default function Cloud(info) {
         navigate('/tree', { state: { data: info } });
     };
 
+    const cloudSize = () => {
+        if (description < 400) {
+            return trees[0]
+        } else if (description < 2000) {
+            return trees[1]
+        } else {
+            return trees[2]
+        }
+    }
 
     const shuffleArray = (array) => {
         const shuffled = array.sort(() => Math.random() - 0.5);
@@ -31,6 +40,7 @@ export default function Cloud(info) {
     //const selectedClouds = shuffleArray(mycloud); // Selecting 3 random clouds
 
     // Selecting a random island
+
     const selectedIsland = island[Math.floor(Math.random() * island.length)];
 
 
@@ -41,9 +51,8 @@ export default function Cloud(info) {
                     <img src={selectedIsland} alt="Selected Island" />
                 </div>
 
-                {/* {selectedClouds.map((cloud, index) => (
-                    <img key={index} src={cloud} alt={`Cloud ${index}`} className="w-1/4" />
-                ))} */}
+
+
             </div>
 
 

@@ -8,28 +8,30 @@
     justify-content: center;
     align-items: left;
     height: 100vh;
-    background: linear-gradient(to bottom, #b3e0ff, #ffffff); /* Vibrant blue gradient */
-    font-family: 'Roboto', sans-serif; /* Modern font */
+    background: linear-gradient(to bottom, #b3e0ff, #ffffff);
+    /* Vibrant blue gradient */
+    font-family: 'Roboto', sans-serif;
+    /* Modern font */
 }
 
 
 /* Style for the form title */
 .form-title {
-    font-size: 6rem; /* Adjusted for better responsiveness */
+    font-size: 3rem;
+    /* Adjusted for better responsiveness */
     font-weight: bold;
-    color: #ffffff; /* White color for better contrast */
+    color: #ffffff;
+    /* White color for better contrast */
     margin-bottom: 20px;
-    margin-left:60px;
-    margin-top:80px;
-    text-transform: uppercase;
+    margin-top: 80px;
+
     letter-spacing: 0.1em;
-    margin-bottom:50;
+    margin-bottom: 50;
 }
 
 /* Style for the form content */
 .form-content {
     margin-top: 100px;
-    margin-left: 100px;
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
@@ -43,8 +45,10 @@
 .ant-input {
     border-radius: 6px;
     margin-bottom: 20px;
-    border: 1px solid #ddd; /* Subtle border */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    border: 1px solid #ddd;
+    /* Subtle border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
 }
 
 /* Style for the Submit button */
@@ -53,26 +57,20 @@
     border-radius: 6px;
     font-weight: bold;
     color: #3c8767;
-    background-color: #32c787; /* Fresh green color */
+    background-color: #32c787;
+    /* Fresh green color */
     border: none;
     transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #28a76f; /* Darker shade on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    background-color: #28a76f;
+    /* Darker shade on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Shadow effect */
 }
 
-.
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .form-title {
-        font-size: 3rem; /* Smaller font size for smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
+. @media (max-width: 480px) {
     .form-content {
         padding: 20px;
     }
