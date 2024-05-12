@@ -18,4 +18,14 @@ Backend
 - **1: Clone Repository:**
 - **2: Install Dependencies and Packages**
 - **3: Go inside client directory, "npm run dev"**
-- **4: Open a new terminal, go inside server directory, "nodemon"** 
+- **4: Open a new terminal, go inside server directory, "nodemon"**
+
+
+Video
+
+Check out this cool video for our demo by clicking on the picture or the YouTube link below 
+
+[![Video](https://img.youtube.com/vi/udSYAxz5HGo/0.jpg)](https://www.youtube.com/watch?v=udSYAxz5HGo)
+
+[https://www.youtube.com/watch?v=udSYAxz5HGo](https://www.youtube.com/watch?v=udSYAxz5HGo)
+
