@@ -13,12 +13,23 @@ Frontend
 Backend
 - Express.js, Node.js, Github Api
 
-**3. Usage/Installation:**
 
-- **1: Clone Repository:**
-- **2: Install Dependencies and Packages**
-- **3: Go inside client directory, "npm run dev"**
-- **4: Open a new terminal, go inside server directory, "nodemon"**
+## How To Launch
+### Running the Program
+1. **Clone the Repository**
+  * Start a new terminal and run the following commands:\
+      &nbsp;&nbsp;&nbsp;&nbsp; *git clone*\
+      &nbsp;&nbsp;&nbsp;&nbsp; *git@github.com:jasonjiang9142/GitGrove_Bhacks.git*
+2. **Download Necessary Packages**\
+      &nbsp;&nbsp;&nbsp;&nbsp; *npm install*
+3. **Run Frontend Code**\
+    &nbsp;&nbsp;&nbsp;&nbsp; *cd client*\
+    &nbsp;&nbsp;&nbsp;&nbsp; *npm run dev*
+4. **Run Backend Code**\
+    On another terminal, run the following commands:\
+      &nbsp;&nbsp;&nbsp;&nbsp; *cd server*\
+      &nbsp;&nbsp;&nbsp;&nbsp; *nodemon app.js*
+<br>
 
 
 Video
