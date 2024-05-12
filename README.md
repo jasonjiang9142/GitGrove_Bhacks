@@ -19,7 +19,7 @@ Backend
 1. **Clone the Repository**
   * Start a new terminal and run the following commands:\
       &nbsp;&nbsp;&nbsp;&nbsp; *git clone*\
-      &nbsp;&nbsp;&nbsp;&nbsp; *git@github.com:jasonjiang9142/GitGrove_Bhacks.git*
+      &nbsp;&nbsp;&nbsp;&nbsp; git@github.com:jasonjiang9142/GitGrove_Bhacks.git
 2. **Download Necessary Packages**\
       &nbsp;&nbsp;&nbsp;&nbsp; *npm install*
 3. **Run Frontend Code**\
